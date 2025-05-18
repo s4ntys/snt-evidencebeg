@@ -50,18 +50,18 @@ end)
 ------------------------------------------------------------
 -- /sealbag <record>
 ------------------------------------------------------------
-QBCore.Commands.Add('sealbag', 'Seal an evidence bag', { { name='record', help='Record number' } }, false,
-    function(src, args)
-        local ply = QBCore.Functions.GetPlayer(src)
-        if not HasJob(ply) then TriggerClientEvent('QBCore:Notify', src, 'Not authorised', 'error') return end
-        local record = args[1]; if not record then TriggerClientEvent('QBCore:Notify', src, 'Usage: /sealbag <record>', 'error') return end
-        -- (Voliteľná kontrola obsahu – len ak export existuje)
-        if exports['qb-inventory'].GetStashItems then
-            local items = exports['qb-inventory']:GetStashItems(('evidencebag_%s'):format(record))
-            if items and #items == 0 then TriggerClientEvent('QBCore:Notify', src, 'Bag is empty', 'error') return end
-        end
-        MySQL.update(('UPDATE `%s` SET sealed=1, sealed_by=?, sealed_at=NOW() WHERE record=?'):format(Config.ArchiveTable),
-                     { ply.PlayerData.citizenid, record })
-        TriggerClientEvent('QBCore:Notify', src, ('Evidence Bag #%s sealed'):format(record), 'success')
-        dbg('Sealed bag', record)
-    end)
+--QBCore.Commands.Add('sealbag', 'Seal an evidence bag', { { name='record', help='Record number' } }, false,
+--    function(src, args)
+--        local ply = QBCore.Functions.GetPlayer(src)
+--        if not HasJob(ply) then TriggerClientEvent('QBCore:Notify', src, 'Not authorised', 'error') return end
+--        local record = args[1]; if not record then TriggerClientEvent('QBCore:Notify', src, 'Usage: /sealbag <record>', 'error') return end
+--        -- (Voliteľná kontrola obsahu – len ak export existuje)
+--        if exports['qb-inventory'].GetStashItems then
+--            local items = exports['qb-inventory']:GetStashItems(('evidencebag_%s'):format(record))
+--            if items and #items == 0 then TriggerClientEvent('QBCore:Notify', src, 'Bag is empty', 'error') return end
+--        end
+--        MySQL.update(('UPDATE `%s` SET sealed=1, sealed_by=?, sealed_at=NOW() WHERE record=?'):format(Config.ArchiveTable),
+--                     { ply.PlayerData.citizenid, record })
+--        TriggerClientEvent('QBCore:Notify', src, ('Evidence Bag #%s sealed'):format(record), 'success')
+--        dbg('Sealed bag', record)
+--    end)
