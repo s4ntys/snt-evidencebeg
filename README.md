@@ -18,7 +18,7 @@ Evidence Bag systém pro QBCore s qb-inventory 2.x a ox_lib.
 
 
 
-Ikonu evidencebag.png vlož do qb-inventory/html/images.
+- Ikonu evidencebag.png vlož do qb-inventory/html/images.
 
 V server.cfg dodrž pořadí zdrojů:
 ```
