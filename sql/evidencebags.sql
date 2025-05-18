@@ -1,0 +1,12 @@
+CREATE TABLE IF NOT EXISTS `evidence_bags` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `record` VARCHAR(64) NOT NULL,
+  `stash` VARCHAR(128) NOT NULL,
+  `creator` VARCHAR(50) NOT NULL,
+  `created` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  `sealed` TINYINT DEFAULT 0,
+  `sealed_by` VARCHAR(50) DEFAULT NULL,
+  `sealed_at` TIMESTAMP NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `stash` (`stash`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
